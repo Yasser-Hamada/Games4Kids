@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="../CSS/styleSheet.css">
+	<script src="../JS/json_file.json"></script>
+</head>
+<body id="alphabet">
+
+<img id="1" src="https://i.ibb.co/fF8kKQF/a.png"   	onclick="alphabet_sound(this.id)" onmouseover="bigImg(this)" onmouseout="normalImg(this)" >
+<img id="2" src="https://i.ibb.co/xCsyLXt/b.png"   	onclick="alphabet_sound(this.id)" onmouseover="bigImg(this)" onmouseout="normalImg(this)">
+<img id="3" src="https://i.ibb.co/KGBxLRZ/c.png"   	onclick="alphabet_sound(this.id)" onmouseover="bigImg(this)" onmouseout="normalImg(this)">
+<img id="4" src="https://i.ibb.co/PN7tfcp/d.png"   	onclick="alphabet_sound(this.id)" onmouseover="bigImg(this)" onmouseout="normalImg(this)">
+<img id="5" src="https://i.ibb.co/Hx3DGjs/e.png"   	onclick="alphabet_sound(this.id)" onmouseover="bigImg(this)" onmouseout="normalImg(this)">
+<img id="6" src="https://i.ibb.co/8xf5trT/f.png"   	onclick="alphabet_sound(this.id)" onmouseover="bigImg(this)" onmouseout="normalImg(this)">
+<img id="7" src="https://i.ibb.co/rZd4vyY/g.png"   	onclick="alphabet_sound(this.id)" onmouseover="bigImg(this)" onmouseout="normalImg(this)">
+<img id="8" src="https://i.ibb.co/8Xmxps3/h.png"   	onclick="alphabet_sound(this.id)" onmouseover="bigImg(this)" onmouseout="normalImg(this)">
+<img id="9" src="https://i.ibb.co/j8MBNMf/i.png"   	onclick="alphabet_sound(this.id)" onmouseover="bigImg(this)" onmouseout="normalImg(this)">
+<img id="10" src="https://i.ibb.co/qWs2vkZ/j.png"   onclick="alphabet_sound(this.id)" onmouseover="bigImg(this)" onmouseout="normalImg(this)">
+<img id="11" src="https://i.ibb.co/BTfSJL9/k.png"  	onclick="alphabet_sound(this.id)" onmouseover="bigImg(this)" onmouseout="normalImg(this)">
+<img id="12" src="https://i.ibb.co/hdGgRQ3/l.png"   onclick="alphabet_sound(this.id)" onmouseover="bigImg(this)" onmouseout="normalImg(this)">
+<img id="13" src="https://i.ibb.co/f13Kqwk/m.png"   onclick="alphabet_sound(this.id)" onmouseover="bigImg(this)" onmouseout="normalImg(this)">
+<img id="14" src="https://i.ibb.co/8DZ41P1/n.png"   onclick="alphabet_sound(this.id)" onmouseover="bigImg(this)" onmouseout="normalImg(this)">
+<img id="15" src="https://i.ibb.co/SVnzPkw/o.png"   onclick="alphabet_sound(this.id)" onmouseover="bigImg(this)" onmouseout="normalImg(this)">
+<img id="16" src="https://i.ibb.co/ncv52qw/p.png"   onclick="alphabet_sound(this.id)" onmouseover="bigImg(this)" onmouseout="normalImg(this)">
+<img id="17" src="https://i.ibb.co/Zx0jzc7/q.png"   onclick="alphabet_sound(this.id)" onmouseover="bigImg(this)" onmouseout="normalImg(this)">
+<img id="18" src="https://i.ibb.co/rxVBxCF/r.png"   onclick="alphabet_sound(this.id)" onmouseover="bigImg(this)" onmouseout="normalImg(this)">
+<img id="19" src="https://i.ibb.co/8cx6zy6/s.png"   onclick="alphabet_sound(this.id)" onmouseover="bigImg(this)" onmouseout="normalImg(this)">
+<img id="20" src="https://i.ibb.co/mCpsMK1/t.png"   onclick="alphabet_sound(this.id)" onmouseover="bigImg(this)" onmouseout="normalImg(this)">
+<img id="21" src="https://i.ibb.co/ZxCS868/u.png"   onclick="alphabet_sound(this.id)" onmouseover="bigImg(this)" onmouseout="normalImg(this)">
+<img id="22" src="https://i.ibb.co/4Fhvq7q/v.png"   onclick="alphabet_sound(this.id)" onmouseover="bigImg(this)" onmouseout="normalImg(this)">
+<img id="23" src="https://i.ibb.co/X3zdWnz/w.png"   onclick="alphabet_sound(this.id)" onmouseover="bigImg(this)" onmouseout="normalImg(this)">
+<img id="24" src="https://i.ibb.co/4szkZtx/x.png"   onclick="alphabet_sound(this.id)" onmouseover="bigImg(this)" onmouseout="normalImg(this)">
+<img id="25" src="https://i.ibb.co/mF7H9V1/y.png"   onclick="alphabet_sound(this.id)" onmouseover="bigImg(this)" onmouseout="normalImg(this)">
+<img id="26" src="https://i.ibb.co/C17sssm/z.png"   onclick="alphabet_sound(this.id)" onmouseover="bigImg(this)" onmouseout="normalImg(this)">
+
+
+<script type="text/javascript">
+	var audio = document.createElement('audio');
+	function alphabet_sound(id) {
+		var value=data.alphabet[id-1];
+			// var aud=document.getElementById("audioo");
+			 // const audio = new Audio('NOGOMI~1.mp3');
+	    // aud.play(); //plays the sound like it should
+			// aud.src = value;
+			// alert(aud.src);
+			// audio.play();
+
+		// alert(id);
+		audio.src = '../sound/alphabet/'+value;
+		audio.play();
+	}
+	 // element.parentNode.removeChild(element);
+
+	function bigImg(img) 
+	{
+	  img.style.height = "17%";
+	  img.style.width = "17%";
+	}
+	function normalImg(img) 
+	{
+	  img.style.height = "15%";
+	  img.style.width = "13%";
+	}
+</script>
+</body>
+</html>

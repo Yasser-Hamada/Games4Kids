@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="../CSS/styleSheet.css">
+    <script src="../JS/json_file.json"></script>
+</head>
+
+<body id="num_quiz">
+    <img src="" id="img">
+    <input id="1" type="text" onfocus="this.value=''" size="40" value="" onkeydown="myFunction(event,this.id)">
+    <button class="button" id="btn"> another question</button>
+
+    <script type="text/javascript">
+        var num_question = 0,
+            num_answer = 0;
+        var index, value, random, number;
+        var arr = new Array();
+        var check = false;
+
+        function getRandomInt(max) {
+            number = Math.floor(Math.random() * Math.floor(max));
+            if (number % 2 != 0) {
+
+                number++;
+            }
+
+            return number;
+        }
+
+        random = getRandomInt(25);
+
+        index = data.question_alphabet.q1[random];
+        value = data.question_alphabet.q1[random + 1];
+        document.getElementById("img").src = index;
+        var audio = document.createElement('audio');
+        var input = document.getElementById("1");
+        input.style.border = "thick solid yellow";
+
+
+        function myFunction(event, info) {
+            var x = event.key;
+            var btn = document.getElementById("btn");
+
+            if (x == value) {
+
+                audio.src = '../sound/clapp.mp3';
+                audio.play();
+                input.style.border = "thick solid green";
+                btn.addEventListener("click", change);
+                btn.style.cursor = 'pointer';
+                btn.style.opacity = '1';
+            } else {
+                btn.style.cursor = 'not-allowed';
+                btn.style.opacity = '0.6';
+                btn.removeEventListener("click", change);
+                input.style.border = "thick solid red";
+
+                audio.src = '../sound/Wrong-answer-sound-effect.mp3';
+                audio.play();
+            }
+
+        }
+        audio.stop();
+
+        function change() {
+
+            random = getRandomInt(25);
+
+            index = data.question_alphabet.q1[random];
+            value = data.question_alphabet.q1[random + 1];
+            document.getElementById("img").src = index;
+            input.style.border = "thick solid yellow";
+
+
+        }
+    </script>
+</body>
+
+</html>

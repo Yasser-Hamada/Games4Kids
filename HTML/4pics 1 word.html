@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+      <style>
+        #letters{
+            margin:20px auto;
+        }
+        #letters span{
+            border: 1px solid transparent;
+            border-radius: 5px;
+            margin:5px;
+            display: inline-block;  
+            width:50px;
+            font-size: 22px;
+            font-weight: bold;
+            height:30px;
+            line-height: 30px;
+            color: white;
+            padding: 5px;
+            background-color:darkgrey;
+            cursor: grab;
+        }
+        section{
+            width: 450px;
+            padding:20px 100px;
+            text-align: center;
+            background-image:repeating-linear-gradient(rgba(0,0,0,1),rgba(0,0,0,.8),rgba(0,0,0,0.7),rgba(0,0,0,1));
+            background-repeat:round;
+            margin: 0 auto; 
+            
+        }
+        div img{
+            width: 400px;
+            height: 350px;
+        }
+        input{
+            border: 1px solid white;
+            border-radius: 4px;
+            width:40px;
+            height: 30px;
+            margin: 10px 5px;
+            background-color: black;
+            font-size: 20px;
+            font-weight: bold;
+            line-height: 30px;
+            color: white;
+            padding: 3px;
+            text-align: center; 
+    
+            
+        }
+        #level{
+            background-color:dimgray;
+            color: white;
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 30px;
+            margin: 10px;
+            border: 1px solid transparent;
+            border-radius: 50%;
+        }
+        button{
+            background-color:dodgerblue;
+            color: white;
+            border: 1px solid black;
+            padding: 8px;
+            font-weight: bold;
+            font-size: 15px;
+            border-radius: 4%;
+            margin:5px;
+            height: 35px;
+        }
+        button:active{
+            background-color: darkgray;
+            
+            
+        }
+    </style>
+    
+
+  </head>
+<body>
+    <section>
+        <div><span id="level"></span></div>
+        <div id="images">
+          <img src="../Images/images/1.PNG">
+        </div>  
+        <div id="mainDiv">
+
+        </div>
+        
+        <div id="letterMain">
+            <div id="letters"> 
+
+            </div>
+        </div>  
+        
+        <!--<button id="btn" type="button" value='click' onclick='check(),next()'>click</button>-->
+        <button id="btn" type="button" value='click' onclick='clearr()'>clear</button>
+        <button id="btn" type="button" value='click' onclick='reset()'>reset levels</button>
+        <!--<button id="btn" type="button" value='click' onclick='goBack()'>go back</button>-->
+        
+    </section>    
+      
+      
+    <script type="text/javascript">
+        var i=0;
+        var    j=0;
+        var x=0;//use it in clickSpan function to put letters in inputs
+        var inp,div,spanL,divLetters,inputWord;
+        var lettersArr;
+        if(!localStorage.level){
+            localStorage.level=0;
+        }
+        j= localStorage.level;
+        var hint;
+        var hintCounts = 10;
+        
+        var words= [
+            ['J','U','M','P'] ,['B','A','L','L'], ['T','R','A','I','N'],['W','A','T','E','R'],
+            ['F','I','S','H'],['C','A','N'],['N','E','T'],['L','O','U','D'],['M','O','R','N','I','N','G'],
+            ['G','A','M','E'], ['C','A','R','D'],['H','O','U','S','E'] ,['T','I','E'],
+            ['R','I','C','H'],['P','A','R','K'],['T','E','A','R'],['F','A','S','T'],
+            ['L','I','G','H','T'],['C','O','L','D'],['H','E','A','V','Y'],
+            
+            
+        ];
+        console.log(j);
+        var imgSrc =[
+            "1.PNG","2.png","3.png","4.png",
+            "5.png","6.png","7.png","8.png",
+            "9.png","10.png","11.png","12.png",
+            "13.png","14.png","11.png","12.png",
+            "14.png","15.png","16.png","17.png",
+            "18.png","19.png","20.png",
+        ]
+		var status =false;
+        div= document.createElement('div');
+        div.setAttribute('id','inputs');
+        document.getElementById('mainDiv').appendChild(div);
+        lettersArr = randomLetters(5);
+        addInputs();
+        
+         createLetterSpan();
+        checkAuto();
+        function checkAuto(){
+            //console.log((words[j].length)-1);
+            if(document.querySelector("input:last-child ").value!=""){
+                check();
+                setTimeout(next,2000);
+            
+            }
+        }
+        
+        function shuffle(array) {
+            array.sort(() => Math.random() - 0.5);
+        }
+        
+        shuffle(lettersArr);
+        console.log(lettersArr);
+        
+        
+        function addInputs(){
+            
+            document.getElementById('level').innerHTML=(Number(j)+1);
+            for(i=0;i<words[j].length;i++){
+                lettersArr.push((words[j][i]));
+                shuffle(lettersArr);
+                inp= document.createElement('input');
+                inp.setAttribute("disabled","true");
+                document.getElementById('inputs').appendChild(inp);
+                document.getElementsByTagName("img")[0].src="../Images/images/"+imgSrc[j];
+               
+            }
+        }
+        function next(){
+            if(status=="true")
+            {
+                var inputsDiv = document.getElementById("inputs");
+                document.getElementById('mainDiv').removeChild(inputsDiv);    
+                div= document.createElement('div');
+                div.setAttribute('id','inputs');
+                document.getElementById('mainDiv').appendChild(div);
+                
+                changeLetterSpan();    
+                
+                lettersArr = randomLetters(5);    
+                //console.log(randomLetters);
+                addInputs();
+                createLetterSpan();
+                status=false; 
+                x=0;
+            }
+            else
+            {
+                //alert('false');
+            }
+        }
+        
+        function check(){
+            inputWord=[];
+            for(i=0;i<words[j].length;i++){ 
+                inputWord.push(document.getElementsByTagName("input")[i].value);
+            }
+            if(inputWord.toString() === words[j].toString()){
+                status =true;
+                //alert(document.getElementsByTagName("input")[i].value);
+
+            }else{
+                status =false;
+
+            }  
+
+            if(status=="true"){
+               
+                for(z=0;z<words[j].length;z++){
+                    document.querySelectorAll("input")[z].style.border="green 1px solid";    
+                }                 
+                var yesAudio=new Audio();
+                yesAudio.src="../sound/audio/yes.mp3";
+                yesAudio.play();
+
+                j++;
+                localStorage.level=j;
+            }else{
+                //alert('Wrong Word ,try again');
+                for(v=0;v<words[j].length;v++){
+                    document.querySelectorAll("input")[v].style.border="red 1px solid";    
+                }
+                var noAudio=new Audio();
+                noAudio.src="../sound/audio/no.mp3";
+                noAudio.play();
+
+                
+               
+            }
+        }
+        function reset(){
+            localStorage.level=0;
+            location.reload();
+        }
+        function goBack(){
+            if(localStorage.level>0)
+            {
+            localStorage.level=localStorage.level-1;
+            location.reload();
+            }
+        }
+        function randomLetters(length) {
+           var result           = [];
+           var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+           var charactersLength = characters.length;
+           for ( var i = 0; i < length; i++ ) {
+              result .push(characters.charAt(Math.floor(Math.random() * charactersLength)));
+           }
+           return result;
+        }
+        
+        function createLetterSpan(){
+               for(k=0;k<lettersArr.length;k++){
+                   spanL=document.createElement('span');
+                   spanL.innerHTML=lettersArr[k];
+                   spanL.setAttribute("onclick","clickSpan(this)");
+                   document.getElementById('letters').appendChild(spanL);
+                   
+               }
+                
+        }
+        function changeLetterSpan(){
+               for(k=0;k<lettersArr.length;k++){
+                   
+                   document.getElementById('letterMain').removeChild(document.getElementById("letters"));
+                    var newDiv = document.createElement("div");
+                    newDiv.setAttribute("id","letters");
+                   document.getElementById('letterMain').appendChild(newDiv);
+                   
+                   
+               }
+                
+        }
+        
+        
+        function clickSpan(e){
+            
+            console.log(e.innerHTML);    
+            
+            if(document.getElementsByTagName("input")[x].innerHTML==""){
+                   document.getElementsByTagName("input")[x].value=e.innerHTML;
+                   e.style.visibility="hidden";
+                   x++;
+                
+            }else{
+                while(document.getElementsByTagName("input")[x].innerHTML!=""){
+                    x++;
+                    //document.getElementsByTagName("span")[x];
+                    //document.getElementsByTagName("input")[x].value=this.innerHTML;
+                     
+                }
+            }
+            checkAuto();
+        }
+	   function clearr(){
+           //console.log("g");
+           for(i=0;i<lettersArr.length;i++){
+               document.getElementsByTagName("span")[i].style.visibility="visible";        
+               
+           }
+           for(i=0;i<words[j].length;i++){
+               document.getElementsByTagName("input")[i].value="";
+           }
+           x=0;
+       }
+        
+ 
+        
+    </script>
+  </body>
+</html>

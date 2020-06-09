@@ -1,0 +1,22 @@
+var data = {
+	alphabet:["a.mp3","b.mp3","c.mp3","d.mp3","e.mp3","f.mp3","g.mp3",
+				"h.mp3","i.mp3","j.mp3","k.mp3","l.mp3"
+				,"m.mp3","n.mp3","o.mp3","p.mp3","q.mp3","r.mp3",
+				"s.mp3","t.mp3","u.mp3","v.mp3","w.mp3","x.mp3","y.mp3","z.mp3"],
+	question_alphabet:{q1:["../Images/alphabet/a.png","a","../Images/alphabet/b.png","b",
+							"../Images/alphabet/c.png","c","../Images/alphabet/d.png","d",
+							"../Images/alphabet/e.png","e","../Images/alphabet/f.png","f",
+							"../Images/alphabet/g.png","g","../Images/alphabet/h.png","h",
+							"../Images/alphabet/j.png","j","../Images/alphabet/k.png","k",
+							"../Images/alphabet/l.png","l","../Images/alphabet/m.png","m",
+							"../Images/alphabet/n.png","n","../Images/alphabet/o.png","o",
+							"../Images/alphabet/p.png","p","../Images/alphabet/q.png","q",
+							"../Images/alphabet/r.png","r","../Images/alphabet/s.png","s",
+							"../Images/alphabet/t.png","t","../Images/alphabet/u.png","u",
+							"../Images/alphabet/v.png","v","../Images/alphabet/w.png","w",
+							"../Images/alphabet/x.png","x","../Images/alphabet/y.png","y",
+							"../Images/alphabet/z.png","z"]},
+}
+
+
+
