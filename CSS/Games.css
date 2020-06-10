@@ -80,7 +80,7 @@ body
 
 .number{
     color: white;
-    font-size: 11em;
+    font-size: 9em;
     margin-left: 10%;
     transition: 1s;
     font-weight: bold;
@@ -89,7 +89,7 @@ body
 }
 
 .title h2{
-    font-size: 3em;
+    font-size: 2em;
     font-weight: bold;
     text-align: center;
     margin-left: 15%;
@@ -113,8 +113,8 @@ span
 
 img
 {
-    width: 15em;
-    height: 15em;
+    width: 12em;
+    height: 12em;
     border-radius: 4em;
 }
 
